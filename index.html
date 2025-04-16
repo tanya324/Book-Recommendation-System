@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Personal Book Recommender</h1>
+        <form method="post">
+            <label for="mood">Your Mood:</label>
+            <select name="mood" id="mood" required>
+                <option value="happy">Happy</option>
+                <option value="sad">Sad</option>
+                <option value="excited">Excited</option>
+            </select>
+
+            <label for="genre">Favorite Genre:</label>
+            <select name="genre" id="genre" required>
+                <option value="fantasy">Fantasy</option>
+                <option value="romance">Romance</option>
+                <option value="drama">Drama</option>
+                <option value="mystery">Mystery</option>
+                <option value="adventure">Adventure</option>
+                <option value="sci-fi">Sci-Fi</option>
+            </select>
+
+            <button type="submit">Get Recommendation</button>
+        </form>
+
+        {% if books %}
+            <div class="results">
+                <h2>Recommended Books:</h2>
+                <ul>
+                    {% for book in books %}
+                        <li>{{ book }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
